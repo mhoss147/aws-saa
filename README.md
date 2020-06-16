@@ -242,8 +242,50 @@ Do the following for each route table in privateA-RT, privateB-RT, and privateC-
     Repeat these steps for each route table.
 
 
+# Objective4: Configure and Test VPC Security
 
 
+
+
+    Note: For more detailed, step-by-step instructions for this objective, please refer to the lab guide (click the Guide tab next to the Video tab).
+
+    Create an App Server instance on the privateA subnet using the same bastion vpclab key.
+    Configure security group, only allowing incoming SSH from the bastion security group.
+    Log in to the App Server using SSH key forwarding.
+    In the AWS console, navigate to VPC > Network ACLs.
+    Select the default NACL, and click Edit inbound rules.
+    Click Add Rule, and set the following values:
+        Rule #: 50
+        Type: ALL Traffic
+        Source: Your IP address (which you can get by googling "what is my IP" in a new browser tab), and append /32 at the end
+        Allow / Deny: DENY
+    In the terminal, try to log in to the bastion host.
+    In the AWS console, remove the NACL's rule #50 to remove the explicit DENY.
+    In the terminal, try connecting to the bastion host again.
+
+
+# On Windows: When using SSH Key Forwarding, you will need specific configuration (includes PuTTY).
+
+- https://aws.amazon.com/blogs/security/securely-connect-to-linux-instances-running-in-a-private-amazon-vpc/
+
+
+- Pageant
+
+To get SSH agent functionality, you can use Pageant, which is available from the PuTTY download page.
+
+Convert your private key from PEM format to PuTTY format using PuTTYGen
+
+In PuTTYGen, choose Conversions > Import Key and select your PEM-formatted private key. 
+ 
+Enter a passphrase and then click Save private key. Save the key as a .ppk file. 
+
+After you convert the private key, open Pageant, which runs as a Windows service.
+
+To import the PuTTY-formatted key into Pageant, double-click the Pageant icon in the notification area and then click Add Key.
+
+After you add the key, close the Pageant Key List window.
+
+Finally, when you are configuring the connections for SSH in PuTTY, check the Allow agent forwarding box and leave the Private key file for authentication field empty.
 
 
 
