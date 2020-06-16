@@ -208,6 +208,38 @@ From the EC2 console:
 
 
 
+# Objective3: Configure Private Internet Connectivity Using NAT Gateway
+
+
+ From the VPC Console:
+Create the NAT Gateways
+
+    Click NAT Gateways and then Create NAT Gateway.
+    Set the subnet to publicA.
+    Click Create New EIP and then Create a NAT Gateway.
+    Click Close.
+    Repeat the process for publicB and publicC for a total of three NAT gateways.
+    Select each NAT gateway in turn, and make a note of the NAT Gateway ID and which public subnet it's in.
+
+Create Three Private Route Tables
+
+    Click Route Tables.
+    Click Create route table.
+    Set the name as privateA-RT and VPC as labVPC.
+    Click Create and then Close.
+    Repeat for privateB-RT and privateC-RT.
+
+Route Table Associations
+
+Do the following for each route table in privateA-RT, privateB-RT, and privateC-RT.
+
+    Select the Subnet Associations tab, click Edit subnet associations, select the db and private subnets in the same AZ.
+        privateA-RT = privateA and dbA
+    Click Save.
+    On the same route table, click Routes, Edit routes, and Add route.
+    Set the destination as 0.0.0.0/0, target as NAT Gateway, and select the NAT Gateway ID in the same AZ (in the list you made earlier).
+    Click Close.
+    Repeat these steps for each route table.
 
 
 
