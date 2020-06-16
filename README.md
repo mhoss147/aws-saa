@@ -141,6 +141,70 @@ Create a three-AZ, three-app tier subnet layout (leaving spaces for a fourth AZ 
 10.0.12.0/24, 10.0.13.0/24, 10.0.14.0/24, and 10.0.15.0/24 can be used for the fourth tier in four AZs, but we won't create them for now.
 
 
+# Objective2: Create Internet Gateway, Public Routing, and Bastion Host
+
+
+From the VPC console:
+
+    Select Subnets.
+    Select publicA, Actions, and Modify auto-assign IP settings.
+    Enable Enable auto-assign public IPv4 address.
+    Repeat for publicB and publicC.
+
+Configure Internet Gateway
+
+    Select Internet Gateways, and click Create internet gateway.
+    Set the name tag as labVPCIGW, and click Create.
+    Select the newly created IGW, click Actions and then Attach to VPC.
+    Select labVPC and click Attach.
+
+Configure Routing
+
+    Click Route Tables.
+    Click Create route table.
+    Set the name tag as publicRT and the VPC as labVPC.
+    Click Create.
+
+Add Default Public Route
+
+    Select publicRT, click Routes, Edit routes, and Add route.
+    Set the destination as 0.0.0.0/0, target as Internet Gateway, and select labVPCIGW.
+    Click Add route again, set the destination as ::/0 , Internet Gateway, and select labVPCIGW.
+    Click Save routes.
+    Click Close.
+
+Associate with Subnets
+
+    Select publicRT, and click the Subnet Associations tab.
+    Click Edit subnet associations.
+    Select publicA, publicB, and publicC.
+    Click Save.
+
+Create a Bastion Host
+
+From the EC2 console:
+
+    Click Launch Instance.
+    Choose Amazon Linux 2, check 64-bit (x86), and click Select.
+    Choose t3.micro, and click Next: Configure Instance Details.
+    Leave all as defaults, except set the subnet to publicB and make sure Auto-assign Public IP is Use subnet setting (Enable).
+    Click Next: Add Storage.
+    Click Next: Add Tags.
+    Add a tag, and set the Key to Name and Value to BastionHost.
+    Click Next: Configure Security Group.
+    For security group, create a new one with the name and description bastionSG.
+    Click Review and Launch.
+    Click Launch, select to Create a new key pair, call it vpclab, and click Download Key Pair.
+    Click Launch Instances and then View Instances.
+
+Verify Bastion Host Is Working
+
+From the EC2 console:
+
+    When the bastion host has 2/2 status checks, right-click, click Connect, and copy the connection command.
+        Linux/macOS users will need to run a chmod 400 vpclab.pem command first to avoid errors.
+        Windows users can connect using this as a guide.
+    Run the connection command to connect to your bastion host.
 
 
 
