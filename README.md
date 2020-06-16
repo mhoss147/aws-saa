@@ -99,6 +99,47 @@ docker tag ef4141e093ea mhoss147/containercat
 
 docker push mhoss147/containercat
 
+# -----------------------------------------------------
+
+# Designing and Building a Custom VPC from Scratch
+
+
+# Objectives1: Create VPC and Subnet Architecture
+
+
+From the VPC console
+Create a VPC
+
+    Select Your VPCs.
+    Click Create VPC, and set the following values:
+        labVPC
+        10.0.0.0/16
+        Amazon Provided IPv6 block
+        Default Tenancy
+    Click Create.
+
+Create Subnets
+
+Create a three-AZ, three-app tier subnet layout (leaving spaces for a fourth AZ and fourth tier).
+
+    Select Subnets.
+    Click Create subnet.
+    Enter the following values in order for Name, VPC, Availability Zone, and IPv4 CIDR Block. Don't assign IPv6 block.
+        publicA, labVPC, us-east-1a, 10.0.0.0/24
+        publicB, labVPC, us-east-1b, 10.0.1.0/24
+        publicC, labVPC, us-east-1c, 10.0.2.0/24
+        Skip 10.0.3.0/24 as the reserved space for a fourth AZ public subnet
+        privateA, labVPC, us-east-1a, 10.0.4.0/24
+        privateB, labVPC, us-east-1b, 10.0.5.0/24
+        privateC, labVPC, us-east-1c, 10.0.6.0/24
+        Skip 10.0.7.0/24 as the reserved space for a fourth AZ private subnet
+        dbA, labVPC, us-east-1a, 10.0.8.0/24
+        dbB, labVPC, us-east-1b, 10.0.9.0/24
+        dbC, labVPC, us-east-1c, 10.0.10.0/24
+        Skip 10.0.11.0/24 as the reserved space for a fourth AZ db subnet
+
+10.0.12.0/24, 10.0.13.0/24, 10.0.14.0/24, and 10.0.15.0/24 can be used for the fourth tier in four AZs, but we won't create them for now.
+
 
 
 
