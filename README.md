@@ -346,6 +346,12 @@ Ensure that the VPC peer created in Task 1, the routing from Task 2, and the VPC
 Enabling DNS support for VPC peers allows the private IP usage to be forced, if applications always use the instance DNS name.
 
 
+# ----------------------------------------------------------------
+
+
+# DNS - TLD -FQDN
+
+$ dig +trace 'google.ca'
 
 
 
