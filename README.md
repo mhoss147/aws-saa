@@ -354,6 +354,14 @@ Enabling DNS support for VPC peers allows the private IP usage to be forced, if 
 $ dig +trace 'google.ca'
 
 
+# Name server - record - routing policy
+
+$ nslookup www.linuxacademy.com
+
+
+
+
+
 
 
 
