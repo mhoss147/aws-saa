@@ -359,7 +359,7 @@ $ dig +trace 'google.ca'
 $ nslookup www.linuxacademy.com
 
 
-- if you forget to uncheck all 4 permission boxes when creating s3 bucket
+# if you forget to uncheck all 4 permission boxes when creating s3 bucket
 
 When creating a bucket on the Set Permissions window if you forget to uncheck all 4 permission boxes or to make the bucket public, perform the following steps:
 
