@@ -359,6 +359,21 @@ $ dig +trace 'google.ca'
 $ nslookup www.linuxacademy.com
 
 
+- if you forget to uncheck all 4 permission boxes when creating s3 bucket
+
+When creating a bucket on the Set Permissions window if you forget to uncheck all 4 permission boxes or to make the bucket public, perform the following steps:
+
+    Navigate to the file directly on the Overview tab of the S3 Management Console.
+    
+    Select the file’s checkbox.
+    
+    Click Permissions.
+    
+    Remove the restrictions so that Group is set to Everyone and Read object is set to Yes for Public access. Read object permissions and Write object permissions should not be set.
+    
+    
+
+
 
 
 
