@@ -371,6 +371,20 @@ When creating a bucket on the Set Permissions window if you forget to uncheck al
     
     Remove the restrictions so that Group is set to Everyone and Read object is set to Yes for Public access. Read object permissions and Write object permissions should not be set.
     
+
+# if you have problem with DNS using dig utility
+
+cloud_user@sorowar0073c:~$ dig cmcloudlab1441.info  (dig yourWebAddress)
+
+
+- nslookup utility
+
+cloud_user@sorowar0073c:~$ nslookup cmcloudlab1441.info
+
+
+
+
+    
     
 
 
