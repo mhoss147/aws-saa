@@ -15,21 +15,77 @@ Here is the CloudFormation template for the lesson.
 
 - Here are the commands used to install WordPress:
 
+- general system update
+
 sudo yum update -y
+
+- install lamp mariaBD
+
 sudo amazon-linux-extras install -y lamp-mariadb10.2-php7.2 php7.2
+
+
+- configure webserver in this ec2 instance
+
 sudo yum install -y httpd
+
+
+- start web-server evvery time ec2 instance starts
+
 sudo systemctl start httpd
+
 sudo systemctl enable httpd
+
+
+- download latest wordpress version
+
 wget https://wordpress.org/latest.tar.gz
+
+
+- extract above file
+
 tar -xzf latest.tar.gz
+
+ls
+
+
+
+- copy that to web root folder to use it with webserver
+
 sudo cp -r wordpress/* /var/www/html/
+
+- got to that folder
+
 cd /var/www/html/
+
+ls -la
+
+
+- configure wordpress to rds point
+
 sudo cp wp-config-sample.php wp-config.php
-sudo nano wp-config.php
+
+
+
+- edit the file 
+
+sudo vim wp-config.php
+
+
+- change permission, check group
 
 sudo chown -R apache /var/www
+
 sudo chgrp -R apache /var/www
+
 sudo chmod 775 /var/www
+
+
+- setting wordpress
+
 sudo find /var/www -type d -exec sudo chmod 2775 {} \;
 sudo find /var/www -type f -exec sudo chmod 0664 {} \;
+
+
+- start server
+
 sudo systemctl restart httpd
