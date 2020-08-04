@@ -4,9 +4,13 @@
 - Relational Database Service (RDS) provides databases as a service using the following engines:
 
     MySQL
+    
     PostgreSQL
+    
     MariaDB
+    
     Oracle
+    
     Microsoft SQL
 
 This set of lessons introduces the architecture fundamentals of RDS and demonstrates an example implementation.
